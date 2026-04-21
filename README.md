@@ -5,7 +5,7 @@ A weather application built for the Frontend Mentor challenge. Search for a city
 
 ## Live Site
 
-- Live URL: YOUR_LIVE_SITE_URL_HERE
+- Live URL: https://ruqiash12-oss.github.io/Weather-App/
 
 ## Features
 
