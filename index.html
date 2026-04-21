@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Weather app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header>
+    <div class="app-logo">
+      <img src="./assets/images/logo.svg" alt="Weather Now Logo">
+    </div>
+    <div class="units-dropdown" id="unitsDropdown">
+      <div class="dropdown-header">
+          Units 
+      </div>
+
+      <ul class="dropdown-list">
+        <li class="option">Switch to Imperial</li>
+          <li class="group-label">Temperature
+          </li>
+          <li class="option" id = "celsius-option" data-type="temperature" data-unit="metric">Celsius (°C)
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark">
+          </li>
+          <li class="option" id="fahrenheit-option" data-type="temperature" data-unit="imperial">Fahrenheit (°F)
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark" >
+          </li>
+          <li class="group-label">Wind Speed</li>
+          <li class="option" data-type="wind" data-unit="kmh">km/h
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark">
+          </li>
+          <li class="option" data-type="wind" data-unit="mph">mph
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark">
+          </li>
+          <li class="group-label">Precipitation</li>
+          <li class="option" data-type="precipitation" data-unit="mm">Millimeters (mm) 
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark">
+          </li>
+          <li class="option" data-type="precipitation" data-unit="inches">Inches (in)
+            <img src="./assets/images/icon-checkmark.svg" alt="Checkmark Icon" class="checkmark">
+          </li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <h1 class="question">How's the sky looking today?</h1>
+    <div class="search">
+      <input type="text" placeholder="Search for a place..." class="cityInput">
+      <button class="searchButton">Search</button>
+    </div>
+    <div class="search-history" id="search-history">
+    </div>
+  </section>
+
+  <div id="app-state" class="app-state hidden">
+    <div class="app-state__icon" aria-hidden="true"></div>
+    <h2 id="app-state-title" class="app-state__title"></h2>
+    <p id="app-state-desc" class="app-state__desc"></p>
+    <button id="app-state-btn" class="app-state__btn hidden" type="button">Retry</button>
+  </div>
+
+  <main>
+    <section id="current-weather">
+      <div id="city-information">
+        <h3 id="city-name"></h3>
+        <p id="date"></p>
+      </div>
+      <div id="weather-details">
+        <img id="current-weather-icon" src="" alt="Current Weather Icon">
+        <h1 id="current-temp"></h1>
+      </div>
+
+      <div id="current-loading" class="loading-overlay hidden">
+        <div class="loading-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="loading-text">Loading...</div>
+      </div>
+    </section>
+
+    <section id="additional-info">
+      <div class="info-box">
+        <p>Feels like</p>
+        <div id="feels-like-temp"></div>
+      </div>
+      <div class="info-box">
+        <p>Humidity</p>
+        <div id="humidity"></div>
+      </div>
+      <div class="info-box">
+        <p>Wind</p>
+        <div id="wind-speed"></div>
+      </div>
+      <div class="info-box">
+        <p>Precipitation</p>
+        <div id="precipitation"></div>
+      </div>
+    </section>
+
+    <section id="daily-forecast">
+      <h2>Daily forecast</h2>
+
+      <div id="daily-skeleton" class="skeleton-days hidden">
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+        <div class="skeleton-day"></div>
+      </div>
+
+      <div id="forecast-day-container"></div>
+    </section>
+
+    <section id="hourly-forecast">
+      <div class="hourly-forecast-title">
+        <p>Hourly forecast</p>
+        <div class="days-dropdown" id="daysDropdown">
+          <div class="dropdown-day-header">
+              Select Day
+          </div>
+          <div class="dropdown-list" id="daysList">
+            
+          </div>
+        </div>
+      </div>
+
+      <div id="hourly-skeleton" class="skeleton-list hidden">
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row"></div>
+      </div>
+
+      <div id="forecast-hour-container">
+      </div>
+
+    </section>
+  </main>
+
+  <div id="bg-layer">
+    <video id="bg-video" autoplay muted loop playsinline></video>
+  </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/ruqiash12-oss">Ruqia Al sheikha</a>.
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
