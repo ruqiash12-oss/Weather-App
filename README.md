@@ -32,7 +32,7 @@ A weather application built for the Frontend Mentor challenge. Search for a city
   - DM Sans
 
 
-## Project Structure (example)
+## Project Structure 
 
 ```text
 .
